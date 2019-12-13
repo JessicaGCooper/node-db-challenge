@@ -57,6 +57,11 @@ function getProjectTasks(project_id){
     .select('t.id', 'p.name as project_name', 'p.description as project_description', 't.project_id', 't.description as task_description', 't.notes', 't.completed')
     .join('tasks as t', 'p.id', 't.project_id')
     .where('p.id', project_id)
+    .then(tasks => {
+        return tasks.map(task => {
+            return {...task, completed: Boolean(task.completed)}
+        })
+    })
 }
 
 // retrieving a list of resources
