@@ -18,6 +18,11 @@ module.exports = {
 // retrieving a list of projects.
 function getProjects(){
     return db('projects')
+    .then(projects => {
+        return projects.map(project => {
+            return {...project, completed: Boolean(project.completed)}
+            })
+        })
 }
 
 //get project by id
@@ -39,6 +44,11 @@ function getTasks(){
     return db('projects as p')
     .select('t.id', 'p.name as project_name', 'p.description as project_description', 't.project_id', 't.description as task_description', 't.notes', 't.completed')
     .join('tasks as t', 'p.id', 't.project_id')
+    .then(tasks => {
+        return tasks.map(task => {
+            return {...task, completed: Boolean(task.completed)}
+        })
+    })
 }
 
 // get tasks by project id
@@ -52,7 +62,7 @@ function getProjectTasks(project_id){
 // retrieving a list of resources
 function getResources(){
     return db('resources')
-}
+};
 
 //get resource by id
 function getResourceById(id){
@@ -68,7 +78,10 @@ function addProject(project){
     .then(ids => {
         const [id] = ids;
 
-        return getProjectById(id);
+        return getProjectById(id)
+            .then(project => {
+            return {...project, completed: Boolean(project.completed)}
+        })
     })
 }
 
@@ -78,8 +91,10 @@ function addTask(task){
     .insert(task, 'id')
     .then(ids => {
         const [id] = ids;
-
-        return getTaskById(id);
+        return getTaskById(id)
+            .then(task => {
+                return {...task, completed: Boolean(task.completed)}
+            })
     })
 }
 

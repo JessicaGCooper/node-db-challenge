@@ -18,7 +18,7 @@ exports.seed = function(knex) {
         }, {
           "id": 3,
           "name": "Do Laundry",
-          "description": "",
+          "description": null,
           "completed": false
         }
       ]);
