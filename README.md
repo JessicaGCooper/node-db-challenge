@@ -39,12 +39,15 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Explain the difference between `Relational Databases` and `SQL`.
-
+  SQL or Structured Query Language is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS), in other words SQL is the language used to write the queries and code used to create tables and to relate tables to one another.  Relational databases are databases that contain tables which are directly linked to oneanother - usualy through an id or key or some sort in order to allow queries which draw data from multiple tables.
 - [ ] Why do tables need a `primary key`?
+  The primary key is the unique identifier for every row/object in the table and without it succesful management of databases with the correct restraints could not be made.
 
 - [ ] What is the name given to a table column that references the primary key on another table.
+Foreign key.
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
+The primary key for each of the two tables must be used as both the primary and as a foreign key in a separate table in order to establish the relationship. The code for the table should establish that the primary key for this new table will contain both foreign keys.
 
 ## Minimum Viable Product
 

@@ -114,3 +114,9 @@ function addResource(resource){
     })
 }
 
+function addResourceToProject(project_id, resource_id){
+    const project_id = project_resources.project_id;
+    const resource_id = project_resources.resource_id;
+    return db('project_resources')
+    .insert(project_id, resource_id)
+} 
